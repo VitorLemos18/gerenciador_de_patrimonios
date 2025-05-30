@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Patrimônios{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+
+  <div class="d-flex gap-2 mb-3 align-items-center flex-wrap">
+    <button class="btn btn-success" id="btnCriarPatrimonio">Criar Patrimônio</button>
+    <button class="btn btn-warning" id="btnEditarPatrimonio" disabled>Editar Patrimônio</button>
+    <button class="btn btn-danger" id="btnExcluirPatrimonio" disabled>Excluir Patrimônio</button>
+    <input type="search" id="inputFiltro" class="form-control ms-auto" placeholder="Filtrar..." style="max-width: 300px;" />
+  </div>
+
+  <table class="table table-striped table-bordered">
+    <thead class="table-dark">
+      <tr><th>Tipo</th><th>Modelo</th><th>Unidade</th><th>Código</th></tr>
+    </thead>
+    <tbody id="patrimoniosTabela"></tbody>
+  </table>
+</div>
+
+<!-- Modal Criar/Editar -->
+<div class="modal fade" id="modalPatrimonio" tabindex="-1" aria-labelledby="modalPatrimonioLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <form id="formPatrimonio" class="modal-content" novalidate>
+      <div class="modal-header">
+        <h5 class="modal-title text-black" id="modalPatrimonioLabel" >Criar Patrimônio</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+          <label for="tipo" class="form-label text-black">Tipo</label>
+          <input type="text" id="tipo" class="form-control " required />
+          <div class="invalid-feedback">Informe o tipo.</div>
+        </div>
+        <div class="mb-3">
+          <label for="modelo" class="form-label text-black">Modelo</label>
+          <input type="text" id="modelo" class="form-control" required />
+          <div class="invalid-feedback text-black">Informe o modelo.</div>
+        </div>
+        <div class="mb-3">
+          <label for="unidade" class="form-label text-black">Unidade Associada</label>
+          <select id="unidade" class="form-select" required>
+            <!-- Opções adicionadas via JS -->
+          </select>
+          <div class="invalid-feedback">Selecione uma unidade válida.</div>
+        </div>
+        <div class="mb-3">
+          <label for="codigo" class="form-label text-black" >Código</label>
+          <input type="text" id="codigo" class="form-control" minlenght="13" required />
+          <div class="invalid-feedback">Informe o código.</div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="submit" class="btn btn-primary">Salvar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="{% static 'js/patrimonios.js' %}"></script>
+{% endblock %}

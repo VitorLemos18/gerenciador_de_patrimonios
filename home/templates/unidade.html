@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Unidades{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+  <div class="d-flex gap-2 mb-3 align-items-center flex-wrap">
+    <button class="btn btn-success" id="btnCriarUnidade">Criar Unidade</button>
+    <button class="btn btn-warning" id="btnEditarUnidade" disabled>Editar Unidade</button>
+    <button class="btn btn-danger" id="btnExcluirUnidade" disabled>Excluir Unidade</button>
+    <input type="search" id="inputFiltro" class="form-control ms-auto" placeholder="Filtrar..." style="max-width: 300px;" />
+  </div>
+
+  <table class="table table-striped table-bordered">
+    <thead class="table-dark">
+      <tr><th>#</th><th>Nome</th><th>Responsável</th></tr>
+    </thead>
+    <tbody id="unidadesTabela"></tbody>
+  </table>
+</div>
+
+<!-- Modal Criar/Editar -->
+<div class="modal fade" id="modalUnidade" tabindex="-1" aria-labelledby="modalUnidadeLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <form id="formUnidade" class="modal-content" novalidate>
+      <div class="modal-header">
+        <h5 class="modal-title text-black" id="modalUnidadeLabel">Criar Unidade</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+          <label for="nome" class="form-label text-black">1. Nome da Unidade</label>
+          <input type="text" id="nome" class="form-control" required />
+          <div class="invalid-feedback">Informe o nome da unidade.</div>
+        </div>
+        <div class="mb-3">
+          <label for="responsavel" class="form-label text-black">2. Responsável</label>
+          <input type="text" id="responsavel" class="form-control" required />
+          <div class="invalid-feedback">Informe o nome do responsável.</div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="submit" class="btn btn-primary">Salvar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="{% static 'js/unidade.js' %}"></script>
+{% endblock %}

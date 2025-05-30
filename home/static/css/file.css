@@ -1,0 +1,148 @@
+/* Navbar */
+.navbar {
+  background-color: #1e3a5f !important; /* azul escuro elegante */
+  height: 48px;
+  padding-top: 0;
+  padding-bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1030;
+}
+
+.navbar .navbar-brand {
+  margin: 0 auto;
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: #f0f0f0;
+}
+
+.navbar .nav-sair {
+  position: absolute;
+  right: 20px;
+  color: #f0f0f0;
+  cursor: pointer;
+  font-weight: 500;
+  user-select: none;
+  font-size: 1rem;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 200px;
+  background-color: #2c3e50; /* azul acinzentado sóbrio */
+  position: fixed;
+  top: 48px; /* altura da navbar */
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  overflow-y: auto;
+  color: #ecf0f1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+}
+
+.sidebar .nav {
+  flex-grow: 1;
+}
+
+.sidebar .nav-link {
+  color: #ecf0f1;
+  font-weight: 500;
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+}
+
+.sidebar .nav-link:hover,
+.sidebar .nav-link.active {
+  background-color: #34495e;
+  color: #fff;
+}
+
+/* Barra de pesquisa com ícone */
+.sidebar .search-container {
+  position: relative;
+  width: 100%;
+}
+
+.sidebar .search-container input[type="text"] {
+  width: 100%;
+  padding: 0.375rem 2.5rem 0.375rem 0.75rem;
+  border-radius: 4px;
+  border: none;
+  outline: none;
+  font-size: 0.9rem;
+}
+
+.sidebar .search-container .bi-search {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #7f8c8d;
+  pointer-events: none;
+  font-size: 1rem;
+  user-select: none;
+}
+
+
+#card_hover_patri,
+#card_hover_uni,
+#card_hover_pend{
+  min-height: 150px; /* ajuste conforme desejar */
+  position: relative;
+  transition: background-color 0.3s ease;
+}
+
+a.position-relative {
+  position: relative;
+  height: 100%;
+  display: block;
+  text-decoration: none;
+}
+
+.card-title {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  margin: 0;
+  font-weight: bold;
+}
+
+.card-icon {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  font-size: 40px;
+}
+
+#card_hover_patri:hover {
+  background-color: #78b4d2 !important;
+}
+
+#card_hover_uni:hover {
+  background-color: #59aa69 !important;
+}
+
+#card_hover_falt:hover {
+  background-color: #f9d356 !important;
+}
+
+.card-quantity {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  font-size: 24px;
+  font-weight: bold;
+  color: inherit;
+}
+
+.pizza-header{
+  margin-top: 1.55em;
+}
+

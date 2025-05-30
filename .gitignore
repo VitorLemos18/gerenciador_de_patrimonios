@@ -1,0 +1,18 @@
+# Arquivos Python compilados
+__pycache__/
+*.pyc
+*.pyo
+
+# Ambiente virtual
+venv/
+env/
+
+# Arquivos do banco SQLite
+db.sqlite3
+
+# Arquivos de log
+*.log
+
+# Arquivos de IDE
+.vscode/
+.idea/
