@@ -37,6 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
       tbody.appendChild(tr);
     });
 
+    // Evento aceitar - move do pendente para ativos
     document.querySelectorAll('.btn-aceitar').forEach(btn => {
       btn.addEventListener('click', e => {
         const idx = Number(e.target.dataset.index);
@@ -51,6 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
+    // Evento recusar - remove do pendente
     document.querySelectorAll('.btn-recusar').forEach(btn => {
       btn.addEventListener('click', e => {
         const idx = Number(e.target.dataset.index);

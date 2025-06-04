@@ -27,6 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let indiceEditando = null;
   let indiceSelecionado = null;
 
+  // Carrega unidades no select
   function carregarUnidades() {
     unidadeSelect.innerHTML = '<option value="" disabled selected>Selecione uma unidade</option>';
     unidades.forEach((u, i) => {
@@ -37,6 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Mostra tabela dos patrimonios ativos (não pendentes)
   function mostrarTabela(lista) {
     tbody.innerHTML = '';
     if (lista.length === 0) {
@@ -59,6 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Seleciona uma linha da tabela para edição/exclusão
   function selecionarLinha(index) {
     indiceSelecionado = index;
     habilitarBotoesAcao();
@@ -79,6 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
     Array.from(tbody.children).forEach(tr => tr.classList.remove('table-primary'));
   }
 
+  // Abre modal para edição
   function abrirEdicao(index) {
     modoEdicao = true;
     indiceEditando = index;
@@ -92,15 +96,17 @@ document.addEventListener('DOMContentLoaded', () => {
     modal.show();
   }
 
+  // Abre modal para criação (novo patrimonio vai para pendentes)
   function abrirCriacao() {
     modoEdicao = false;
     indiceEditando = null;
-    modalTitle.textContent = 'Criar Patrimônio (vai para pendentes)';
+    modalTitle.textContent = 'Criar Patrimônio (envia para pendentes)';
     form.reset();
     form.classList.remove('was-validated');
     modal.show();
   }
 
+  // Botões criar, editar, excluir
   btnCriar.addEventListener('click', abrirCriacao);
 
   btnEditar.addEventListener('click', () => {
@@ -114,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
       patrimonios.splice(indiceSelecionado, 1);
       localStorage.setItem(patrimoniosKey, JSON.stringify(patrimonios));
       indiceSelecionado = null;
-      mostrarTabela(filtrar());
+      mostrarTabela(patrimonios);
     }
   });
 
@@ -136,7 +142,12 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    // Verifica duplicidade de código em ativos e pendentes
+    if (codigo.length < 13) {
+      alert('O código deve ter pelo menos 13 caracteres!');
+      return;
+    }
+
+    // Evitar código duplicado em ativos e pendentes
     const codigoExisteAtivo = patrimonios.some((p, idx) => p.codigo === codigo && (!modoEdicao || idx !== indiceEditando));
     const codigoExistePendente = patrimoniosPendentes.some(p => p.codigo === codigo);
 
@@ -180,7 +191,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Inicialização
+  // Inicializa
   carregarUnidades();
   mostrarTabela(patrimonios);
   desabilitarBotoesAcao();

@@ -96,7 +96,7 @@
 #card_hover_pend{
   min-height: 150px; /* ajuste conforme desejar */
   position: relative;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease !important;
 }
 
 a.position-relative {
