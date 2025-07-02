@@ -2,15 +2,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('formUsuario');
   const tabelaBody = document.querySelector('#tabelaUsuarios tbody');
 
-  // Lista de usuários do localStorage ou vazia
   let usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
 
-  // Salva a lista atualizada no localStorage
   function salvarUsuarios() {
     localStorage.setItem('usuarios', JSON.stringify(usuarios));
   }
 
-  // Renderiza a tabela de usuários
   function renderizarUsuarios() {
     tabelaBody.innerHTML = '';
     usuarios.forEach((u, index) => {
@@ -25,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
       tabelaBody.appendChild(tr);
     });
 
-    // Evento para excluir usuário
+
     tabelaBody.querySelectorAll('.btn-excluir').forEach(btn => {
       btn.addEventListener('click', e => {
         const i = parseInt(e.target.getAttribute('data-index'));
@@ -36,7 +33,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Validação e cadastro do usuário
   form.addEventListener('submit', e => {
     e.preventDefault();
     console.log('Submit capturado!');
@@ -50,7 +46,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const username = form.username.value.trim();
     const password = form.password.value.trim();
     const perfil = form.perfil.value;
-    alert('oi')
 
     if (usuarios.some(u => u.username === username)) {
       alert('Usuário já existe!');

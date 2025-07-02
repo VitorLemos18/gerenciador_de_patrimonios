@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (qntPatrimonios) qntPatrimonios.textContent = patrimonios.length;
   if (qntUnidades) qntUnidades.textContent = unidades.length;
 
-  // Popup aviso
+
   const popupAviso = document.getElementById('popupAviso');
   const fundoAviso = document.getElementById('fundoAviso');
   const mensagemAviso = document.getElementById('mensagemAviso');
@@ -34,13 +34,12 @@ document.addEventListener('DOMContentLoaded', () => {
   btnFecharAviso.onclick = esconderPopupAviso;
   fundoAviso.onclick = esconderPopupAviso;
 
-  // Modal pendentes
   const modalEl = document.getElementById('modalPendentes');
   const modal = new bootstrap.Modal(modalEl);
   const tabelaPendentesBody = document.querySelector('#tabelaPendentes tbody');
   const btnAbrirModal = document.getElementById('abrirModalPendentes');
 
-  // Atualiza pendentes
+
   function atualizarQuantidadePendentes() {
     const pendentes = patrimonios.filter(p => !p.codigo || p.codigo.length < 13);
     if (qntPendentes) qntPendentes.textContent = pendentes.length;
@@ -77,7 +76,6 @@ document.addEventListener('DOMContentLoaded', () => {
           return;
         }
 
-        // Atualiza no array patrimonios original
         const pendentesAtualizados = patrimonios.filter(p => !p.codigo || p.codigo.length < 13);
         const pendente = pendentesAtualizados[i];
         const idxOriginal = patrimonios.findIndex(item => item.tipo === pendente.tipo && item.modelo === pendente.modelo);

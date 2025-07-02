@@ -2,6 +2,20 @@ document.addEventListener('DOMContentLoaded', () => {
   const formLogin = document.getElementById('loginForm');
   if (!formLogin) return;
 
+  const usuarioGestor = {
+    username: 'gestor',
+    password: '1234',
+    tipo: 'gestor'
+  };
+
+  let usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+  const gestorExiste = usuarios.some(u => u.username === usuarioGestor.username);
+
+  if (!gestorExiste) {
+    usuarios.push(usuarioGestor);
+    localStorage.setItem('usuarios', JSON.stringify(usuarios));
+  }
+
   function mostrarPopup(mensagem) {
     const popupErro = document.getElementById('popupErro');
     const mensagemPopup = document.getElementById('mensagemPopup');

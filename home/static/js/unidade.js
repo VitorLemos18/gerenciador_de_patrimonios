@@ -134,7 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
     );
   }
 
-  // Inicialização
+
   mostrarTabela(unidades);
   desabilitarBotoesAcao();
 });

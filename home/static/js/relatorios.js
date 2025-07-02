@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnExportCSV = document.getElementById('btnExportCSV');
   const btnExportPDF = document.getElementById('btnExportPDF');
 
-  // Preenche os selects de filtro (tipo e unidade)
+
   function popularFiltros() {
     const tipos = [...new Set(patrimonios.map(p => p.tipo))].sort();
     filtroTipo.innerHTML = '<option value="">Todos os Tipos</option>' +
@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
       unidades.map((u, i) => `<option value="${i}">${u.nome}</option>`).join('');
   }
 
-  // Filtra patrimônios conforme filtros
+
   function aplicarFiltros() {
     let listaFiltrada = patrimonios;
 
@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
     return listaFiltrada;
   }
 
-  // Renderiza tabela com dados filtrados
+
   function renderizarTabela(lista) {
     tabela.innerHTML = '';
     if (lista.length === 0) {
@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Exporta tabela filtrada para CSV
+
   function exportarCSV(lista) {
     if (lista.length === 0) {
       alert('Nenhum dado para exportar.');
@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
     URL.revokeObjectURL(url);
   }
 
-  // Exporta tabela filtrada para PDF (usando jsPDF + autotable)
+
   function exportarPDF(lista) {
     if (lista.length === 0) {
       alert('Nenhum dado para exportar.');
@@ -124,7 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
     doc.save('relatorio_patrimonios.pdf');
   }
 
-  // Atualiza UI (tabela)
+
   function atualizarUI() {
     const filtrado = aplicarFiltros();
     renderizarTabela(filtrado);
